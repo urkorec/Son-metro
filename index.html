@@ -52,31 +52,32 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 20px
 .top-grid{display:grid;grid-template-columns:1fr 380px;gap:16px;}
 
 /* METER CARD */
-.meter-card{background:var(--white);border-radius:var(--r);box-shadow:var(--s2);padding:28px 32px;display:flex;flex-direction:column;align-items:center;gap:22px;position:relative;overflow:hidden;}
+.meter-card{background:var(--white);border-radius:var(--r);box-shadow:var(--s2);padding:28px 20px;position:relative;overflow:hidden;}
 .meter-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--indigo),var(--teal));border-radius:4px 4px 0 0;}
-.ring-wrap{position:relative;width:220px;height:220px;}
-#ringCanvas{position:absolute;inset:0;}
-.ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;}
-.ring-db{font-size:4.5rem;font-weight:800;line-height:1;letter-spacing:-3px;transition:color 0.3s;color:var(--indigo);}
-.ring-unit{font-size:0.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt3);}
-.ring-pill{margin-top:6px;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;transition:all 0.3s;}
+/* All meter children stack vertically and are centred via margin:0 auto — no flexbox */
+.ring-wrap{display:block;position:relative;width:220px;height:220px;margin:0 auto;}
+#ringCanvas{position:absolute;top:0;left:0;width:220px;height:220px;}
+.ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-align:center;}
+.ring-db{font-size:4.5rem;font-weight:800;line-height:1;letter-spacing:-3px;transition:color 0.3s;color:var(--indigo);display:block;width:100%;text-align:center;}
+.ring-unit{font-size:0.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--txt3);display:block;width:100%;text-align:center;}
+.ring-pill{margin-top:6px;padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;transition:all 0.3s;display:inline-block;}
 .rp-idle{background:var(--bg2);color:var(--txt3);}
 .rp-calm{background:var(--green-l);color:var(--green);}
 .rp-mid{background:var(--amber-l);color:var(--amber);}
 .rp-loud{background:var(--rose-l);color:var(--rose);animation:rpL 0.8s ease-in-out infinite alternate;}
 @keyframes rpL{from{transform:scale(1)}to{transform:scale(1.05)}}
-.wave-wrap{width:100%;max-width:380px;height:48px;display:flex;align-items:flex-end;gap:3px;}
+.wave-wrap{display:flex;align-items:flex-end;gap:3px;width:100%;height:48px;margin-top:20px;}
 .wb{flex:1;border-radius:3px 3px 1px 1px;min-height:3px;transition:height 0.07s ease;}
-.thresh-wrap{width:100%;max-width:380px;background:var(--bg2);border-radius:var(--rs);padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
+.thresh-wrap{width:100%;background:var(--bg2);border-radius:var(--rs);padding:14px 16px;display:flex;flex-direction:column;gap:10px;margin-top:20px;box-sizing:border-box;}
 .thresh-row{display:flex;justify-content:space-between;align-items:center;}
 .thresh-lbl{font-size:0.8rem;font-weight:600;color:var(--txt2);}
 .thresh-num{font-size:1.2rem;font-weight:800;color:var(--amber);}
 .grange{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--indigo) var(--p,45%),rgba(0,0,0,0.1) var(--p,45%));outline:none;cursor:pointer;}
 .grange::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:white;border:2px solid var(--indigo);box-shadow:0 2px 8px rgba(79,87,232,0.3);cursor:pointer;}
 .range-hints{display:flex;justify-content:space-between;font-size:0.68rem;font-weight:500;color:var(--txt3);}
-.mic-btn{width:100%;max-width:380px;padding:15px 24px;border-radius:var(--rs);border:none;font-family:var(--f);font-size:0.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.mic-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 24px;border-radius:var(--rs);border:none;font-family:var(--f);font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;box-sizing:border-box;margin-top:20px;}
 .mic-btn.off{background:linear-gradient(135deg,var(--indigo),var(--teal));color:white;box-shadow:0 6px 24px rgba(79,87,232,0.35);}
-.mic-hint{width:100%;max-width:380px;display:flex;align-items:flex-start;gap:8px;padding:12px 14px;border-radius:var(--rx);background:var(--amber-l);border:1px solid rgba(245,166,35,0.3);font-size:0.78rem;font-weight:500;color:var(--txt2);line-height:1.5;margin-top:-6px;}
+.mic-hint{display:flex;align-items:flex-start;gap:8px;width:100%;padding:12px 14px;border-radius:var(--rx);background:var(--amber-l);border:1px solid rgba(245,166,35,0.3);font-size:0.78rem;font-weight:500;color:var(--txt2);line-height:1.5;box-sizing:border-box;margin-top:12px;}
 .mic-hint span:first-child{font-size:1rem;flex-shrink:0;}
 @keyframes micP{0%,100%{box-shadow:0 6px 24px rgba(242,67,101,0.35)}50%{box-shadow:0 6px 24px rgba(242,67,101,0.35),0 0 0 8px rgba(242,67,101,0.08)}}
 .mic-btn:active{transform:scale(0.97);}
@@ -270,9 +271,7 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 20px
   .tab-bar{padding:0 10px;}
   .tab-btn{font-size:0.8rem;gap:4px;padding:12px 6px;}
   .page{padding:14px 12px 80px;}
-  .meter-card{padding:22px 18px;gap:18px;}
-  .ring-wrap{width:190px;height:190px;}
-  .ring-db{font-size:3.8rem;}
+  .meter-card{padding:22px 16px;}
   .people-card .plist{max-height:220px;}
   .score-hero{padding:20px 16px;}
   .rank-row{grid-template-columns:32px 34px 1fr 60px;gap:8px;padding:11px 12px;}
@@ -287,8 +286,8 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 20px
 }
 @media(max-width:380px){
   .tab-btn span:first-child{display:none;}
-  .ring-wrap{width:170px;height:170px;}
-  .ring-db{font-size:3.4rem;}
+  .page{padding:10px 10px 80px;}
+  .meter-card{padding:18px 12px;}
 }
 </style>
 </head>
